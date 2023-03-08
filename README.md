@@ -1,6 +1,6 @@
 # access_app_clone
 
-A new Flutter project.
+An Access bank mobile app clone using flutter.
 
 ## Getting Started
 

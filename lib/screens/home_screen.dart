@@ -12,17 +12,18 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        extendBodyBehindAppBar: true,
-        extendBody: true,
         // bottomNavigationBar: HomeBottomNav(),
         body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Container(
-            height: Adaptive.h(50),
+            height: Adaptive.px(460),
             decoration: const BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
-                colors: [Color(0xFF6785f5), Color(0xFF032296)],
+                colors: [
+                  Color.fromARGB(255, 100, 146, 245),
+                  Color.fromARGB(255, 27, 44, 104)
+                ],
               ),
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(10),
@@ -31,7 +32,7 @@ class HomeScreen extends StatelessWidget {
             ),
             child: Padding(
               padding: const EdgeInsets.only(
-                // top: 15,
+                top: 15,
                 left: 15,
                 right: 15,
               ),
@@ -47,6 +48,7 @@ class HomeScreen extends StatelessWidget {
                             'Good Afternoon,',
                             style: TextStyle(
                               fontSize: 18,
+                              color: Colors.white,
                             ),
                             softWrap: true,
                           ),
@@ -55,13 +57,17 @@ class HomeScreen extends StatelessWidget {
                             style: TextStyle(
                               fontSize: 22,
                               fontWeight: FontWeight.bold,
+                              color: Colors.white,
                             ),
-                          )
+                          ),
                         ],
                       ),
                       const IconButton(
                         onPressed: null,
-                        icon: Icon(Icons.notifications),
+                        icon: Icon(
+                          Icons.notifications,
+                          color: Colors.white,
+                        ),
                       ),
                     ],
                   ),
@@ -79,11 +85,15 @@ class HomeScreen extends StatelessWidget {
                         children: [
                           TextButton.icon(
                             onPressed: null,
-                            icon: const Icon(Icons.edit_outlined),
+                            icon: const Icon(
+                              Icons.edit_outlined,
+                              color: Colors.white,
+                            ),
                             label: const Text(
                               'Edit',
                               style: TextStyle(
                                 fontSize: 18,
+                                color: Colors.white,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -97,7 +107,23 @@ class HomeScreen extends StatelessWidget {
                   //       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   //           crossAxisCount: 4)),
                   // )
-                  Expanded(child: const Grids()),
+                  const Expanded(child: Grids()),
+                  InkWell(
+                    child: Column(
+                      children: const [
+                        Text(
+                          'Show All',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Icon(Icons.keyboard_arrow_down)
+                      ],
+                    ),
+                    onTap: () {}, //TODO Implement onTap
+                  ),
                 ],
               ),
             ),
@@ -117,18 +143,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
-
-// GestureDetector(
-//                                 onTap: () => print('object'),
-//                                 child: Column(
-//                                   mainAxisAlignment: MainAxisAlignment.end,
-//                                   crossAxisAlignment: CrossAxisAlignment.center,
-//                                   children: const [
-//                                     Text(
-//                                       'Show All',
-//                                     ),
-//                                     Icon(Icons.keyboard_arrow_down_sharp)
-//                                   ],
-//                                 ),
-//                               ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 class MenuScreen extends StatelessWidget {
   const MenuScreen({Key? key}) : super(key: key);
@@ -13,7 +14,7 @@ class MenuScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              height: MediaQuery.of(context).size.height * 0.4,
+              height: Adaptive.px(250),
               decoration: const BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.topLeft,
@@ -34,138 +35,134 @@ class MenuScreen extends StatelessWidget {
                   left: 15,
                   right: 15,
                 ),
-                child: LayoutBuilder(
-                  builder: (BuildContext context, BoxConstraints constraints) {
-                    return Column(children: [
-                      Align(
-                          alignment: Alignment.topRight,
-                          child: GestureDetector(
-                            child: Container(padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                  color: Colors.lightBlue),
-                              child: const Text('Show Balance'),
-                          
+                child: Column(children: [
+                  Align(
+                    alignment: Alignment.topRight,
+                    child: GestureDetector(
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 5, horizontal: 10),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: Colors.lightBlue),
+                        child: const Text('Show Balance'),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  const Text(
+                    'SOLO',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      color: Colors.white,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  const Text(
+                    '4839049324',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 24,
+                      color: Colors.white,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Expanded(
+                    child: Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Padding(
+                        padding: const EdgeInsets.only(bottom: 20),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: const [
+                            CustomCard(
+                              icon: Icon(Icons.qr_code_2_outlined),
+                              txt: 'My QR',
                             ),
-                          )
-                          // ElevatedButton(
-                          //   style: ButtonStyle(
-                          //     // minimumSize: MaterialStateProperty.all(const Size.fromHeight(38)),
-                          //     fixedSize: MaterialStateProperty.all(
-                          //         const Size.fromHeight(10)),
-                          //     elevation: MaterialStateProperty.all(0),
-                          //     shape: MaterialStateProperty.all(
-                          //       RoundedRectangleBorder(
-                          //         borderRadius: BorderRadius.circular(30),
-                          //       ),
-                          //     ),
-                          //   ),
-                          //   onPressed: () {},
-                          //   child: const FittedBox(child: Text('Show Balance')),
-                          // ),
-                          ),
-                      SizedBox(
-                        height: constraints.maxHeight * 0.1,
+                            CustomCard(
+                              icon: Icon(Icons.person_outline),
+                              txt: 'Beneficiaries',
+                            ),
+                            CustomCard(
+                              icon: Icon(Icons.history),
+                              txt: 'Transactions',
+                            ),
+                          ],
+                        ),
                       ),
-                      // FittedBox(child: Text('Show Balance'),),
-                      const Text(
-                        'SOLO',
-                        style: TextStyle(fontWeight: FontWeight.w500),
-                      ),
-                      SizedBox(
-                        height: constraints.maxHeight * 0.02,
-                      ),
-                      const Text(
-                        '4839049324',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 24),
-                      ),
-                      SizedBox(
-                        height: constraints.maxHeight * 0.3,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: const [
-                          CustomCard(
-                            icon: Icon(Icons.qr_code_2_outlined),
-                            txt: 'My QR',
-                          ),
-                          CustomCard(
-                            icon: Icon(Icons.person_outline),
-                            txt: 'Beneficiaries',
-                          ),
-                          CustomCard(
-                            icon: Icon(Icons.history),
-                            txt: 'Transactions',
-                          ),
-                        ],
-                      ),
-                    ]);
-                  },
-                ),
+                    ),
+                  ),
+                ]),
               ),
             ),
             Expanded(
               child: ListView(
-                children: const [
-                  ListTile(
-                    title: Text('Account'),
-                    trailing: Icon(Icons.arrow_circle_right),
-                  ),
+                children: [
+                  const CustomListTile(txt: 'Account'),
                   Divider(
-                    color: Colors.grey,
+                    color: Colors.grey[300],
                     thickness: 1,
                   ),
-                  ListTile(
-                    title: Text('Transfers'),
-                    trailing: Icon(Icons.arrow_circle_right),
-                  ),
+                  const CustomListTile(txt: 'Transfers'),
                   Divider(
-                    color: Colors.grey,
+                    color: Colors.grey[300],
                     thickness: 1,
                   ),
-                  ListTile(
-                    title: Text('Payments Methods'),
-                    trailing: Icon(Icons.arrow_circle_right),
-                  ),
+                  const CustomListTile(txt: 'Payment Methods'),
                   Divider(
-                    color: Colors.grey,
+                    color: Colors.grey[300],
                     thickness: 1,
                   ),
-                  ListTile(
-                    title: Text('Bill Payments'),
-                    trailing: Icon(Icons.arrow_circle_right),
-                  ),
+                  const CustomListTile(txt: 'Bill Payments'),
                   Divider(
-                    color: Colors.grey,
+                    color: Colors.grey[300],
                     thickness: 1,
                   ),
-                  ListTile(
-                    title: Text('Lifestyle'),
-                    trailing: Icon(Icons.arrow_circle_right),
-                  ),
+                  const CustomListTile(txt: 'Lifestyle'),
                   Divider(
-                    color: Colors.grey,
+                    color: Colors.grey[300],
                     thickness: 1,
                   ),
-                  ListTile(
-                    title: Text('Cheques & Cards'),
-                    trailing: Icon(Icons.arrow_circle_right),
-                  ),
+                  const CustomListTile(txt: 'Cheques & Cards'),
                   Divider(
-                    color: Colors.grey,
+                    color: Colors.grey[300],
                     thickness: 1,
                   ),
-                  ListTile(
-                    title: Text('Loans & Investments'),
-                    trailing: Icon(Icons.arrow_circle_right),
-                  ),
+                  const CustomListTile(txt: 'Loans & Investments'),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),
+    );
+  }
+}
+
+class CustomListTile extends StatelessWidget {
+  final String txt;
+  const CustomListTile({
+    super.key,
+    required this.txt,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: Text(
+        txt,
+        style: const TextStyle(
+          fontWeight: FontWeight.w500,
+          fontSize: 18,
+        ),
+      ),
+      trailing: const Icon(Icons.arrow_circle_right),
     );
   }
 }
@@ -191,7 +188,15 @@ class CustomCard extends StatelessWidget {
       width: 110,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [icon, Text(txt)],
+        children: [
+          icon,
+          Text(
+            txt,
+            style: const TextStyle(
+              color: Colors.white,
+            ),
+          )
+        ],
       ),
     );
   }

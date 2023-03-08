@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
-// import 'package:google_fonts/google_fonts.dart';
 import '../providers/grid_tiles.dart';
 
 class Grids extends StatelessWidget {
@@ -18,9 +16,9 @@ class Grids extends StatelessWidget {
           .map(
             (e) => Container(
               decoration: BoxDecoration(
-                  border: Border.all(width: 1),
-                  borderRadius: BorderRadius.circular(3),
-                  color: Colors.transparent),
+                  border: Border.all(style: BorderStyle.none),
+                  borderRadius: BorderRadius.circular(1),
+                  color: Colors.white12),
               margin: const EdgeInsets.all(2),
               child: InkWell(
                 child: Column(
